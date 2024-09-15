@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Duplas</h2>
+<ul>
+    {% for dupla in duplas %}
+    <li><a href="{{ url_for('duplas.detalhe_dupla', dupla_id=dupla.id) }}">{{ dupla.nome }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
