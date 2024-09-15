@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2>Jogadores</h2>
-<ul>
-    {% for jogador in jogadores %}
-    <li><a href="{{ url_for('jogadores.detalhe_jogador', jogador_id=jogador.id) }}">{{ jogador.nome }}</a></li>
-    {% endfor %}
-</ul>
-{% endblock %}

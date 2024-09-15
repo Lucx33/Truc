@@ -1,23 +1,11 @@
-from app import create_app, db
-from app.models import Jogador
+from app import create_app
 import pandas as pd
+
 
 # Função para importar jogadores do CSV
 def importar_jogadores_csv(caminho_csv):
     df = pd.read_csv(caminho_csv)
         
-    # Verifica se o banco já está populado
-    if Jogador.query.count() == 0:  # Evita duplicação de dados
-        for index, row in df.iterrows():
-            jogador = Jogador(
-                id=row['id'],
-                nome=row['nome'],
-                vitorias=row['vitórias'],
-                derrotas=row['derrotas'],
-                saldo=row['saldo']
-            )
-            db.session.add(jogador)
-        db.session.commit()
 
 # Cria o app
 app = create_app()
