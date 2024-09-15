@@ -13,11 +13,8 @@ jogadores = set([jogador for sublist in df['Vencedores'] + df['Perdedores'] for 
 # Criando um DataFrame individual para cada jogador
 jogador = {jogador: utils.criar_df_jogador(jogador, df) for jogador in jogadores}
 
-print(jogador.keys())
-
-print(jogador['Lou'])
-
-df_html = utils.create_links(df)
+df_html = utils.create_links_partidas(df)
+df_jogador_html = {jogador: utils.create_links_jogador(df) for jogador, df in jogador.items()}
 
 @main.route('/')
 def show_dataframe():

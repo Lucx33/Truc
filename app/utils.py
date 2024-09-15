@@ -92,7 +92,7 @@ def tratar_df(df):
     df = df[cols]
     return df
 
-def create_links(df):
+def create_links_partidas(df):
     # Adicionando links para cada vencedor
     def create_links(column):
         links = [f'<a href="/jogador/{player}">{player}</a>' for player in column]
@@ -104,6 +104,17 @@ def create_links(df):
 
     return df
 
+
+def create_links_jogador(df):
+    # Adicionando links para cada vencedor
+    def create_links(column):
+        links = [f'<a href="/jogador/{player}">{player}</a>' for player in column]
+        return ', '.join(links)  # Separa os links com vírgulas
+
+    df['Dupla'] = df['Dupla'].apply(create_links)
+    df['Oponente'] = df['Oponente'].apply(create_links)
+
+    return df
 
 # Função para criar o DataFrame de cada jogador com a informação da dupla
 def criar_df_jogador(jogador, df):
