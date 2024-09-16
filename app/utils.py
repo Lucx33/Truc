@@ -89,7 +89,7 @@ def tratar_df(df):
     cols.insert(new_position, col_to_move)
 
     # Reorder the DataFrame columns
-    df = df[cols]
+    df = df[cols] 
     return df
 
 def create_links_partidas(df):
@@ -140,3 +140,58 @@ def criar_df_jogador(jogador, df):
     
     df_jogador = pd.DataFrame(dados_jogador)
     return df_jogador
+
+def calcular_winrate(df_jogador):
+    def winrate(partidas):
+        vitorias = partidas[partidas['Resultado'] == 'Vitória'].shape[0]
+        total_partidas = partidas.shape[0]
+        return vitorias / total_partidas if total_partidas > 0 else 0
+
+    def maior_winrate_contra(df, tipo='dupla'):
+        max_winrate = 0
+        melhor_oponente = None
+        # Se tipo for dupla, verificar winrate contra duplas, senão contra jogadores
+        if tipo == 'dupla':
+            oponentes_unicos = df['Oponente'].apply(lambda x: tuple(sorted(x))).unique()
+        else:
+            oponentes_unicos = df['Oponente'].explode().unique()
+        
+        for oponente in oponentes_unicos:
+            if tipo == 'dupla':
+                partidas = df[df['Oponente'].apply(lambda x: set(x) == set(oponente))]
+            else:
+                partidas = df[df['Oponente'].apply(lambda x: oponente in x)]
+            if partidas.shape[0] >= 5:
+                winrate_oponente = winrate(partidas)
+                if winrate_oponente > max_winrate:
+                    max_winrate = winrate_oponente
+                    melhor_oponente = oponente
+
+        return melhor_oponente, max_winrate
+
+    # Cálculo do winrate geral
+    winrate_geral = winrate(df_jogador)
+
+    # Melhor winrate contra dupla
+    melhor_dupla, winrate_dupla = maior_winrate_contra(df_jogador, tipo='dupla')
+
+    # Melhor winrate contra jogador
+    melhor_jogador, winrate_jogador = maior_winrate_contra(df_jogador, tipo='jogador')
+    
+    # Função para criar links HTML
+    def create_links(player_or_dupla):
+        if isinstance(player_or_dupla, tuple):
+            # Se for uma dupla, criar links para cada jogador
+            return ', '.join([f'<a href="/jogador/{player}">{player}</a>' for player in player_or_dupla])
+        else:
+            # Se for um jogador único
+            return f'<a href="/jogador/{player_or_dupla}">{player_or_dupla}</a>'
+    
+    # Criando um novo DataFrame com as estatísticas do jogador
+    player_stats = pd.DataFrame([{
+        'Winrate Geral': f"{round(winrate_geral * 100)}%",
+        'Melhor Winrate Contra Dupla': f"{create_links(melhor_dupla)} ({round(winrate_dupla * 100)}%)" if melhor_dupla else "N/A",
+        'Melhor Winrate Contra Jogador': f"{create_links(melhor_jogador)} ({round(winrate_jogador * 100)}%)" if melhor_jogador else "N/A"
+    }])
+
+    return player_stats

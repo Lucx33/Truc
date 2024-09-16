@@ -1,0 +1,51 @@
+Dia,Jogador 1,Jogador 2,Placar,Jogador 3,Jogador 4,Vencedores,Local,Baralho,"
+",,,Pessoa,Num Partidas,Vitórias,Derrotas,Faltas
+10/9,Lou,Bol,12x5,Bruno,Luca,Lou e Bol,Geneal,HDi,,,,Ana,5,2,3,0
+10/9,Luca,Thierno,12x5,Lou,Bol,Luca e Thierno,Geneal,HDi,,,,Bruno,22,15,7,0
+10/9,Luca,Thierno,12x7,Bruno,Gabi,Luca e Thierno,Geneal,HDi,,,,Bol,15,4,11,0
+10/9,Bruno,Luca,12x10,Lou,Bol,Bruno e Luca,Geneal,HDi,,,,Felipe,13,7,6,0
+10/9,Bruno,Luca,12x7,Lou,Bol,Bruno e Luca,Geneal,HDi,,,,Gabi,8,3,5,0
+10/9,Luca,Felipe,8x12,Lou,Bol,Lou e Bol,BDF,HDi,,,,,,,,
+10/9,Luca,Thierno,9x12,Lou,Bol,Lou e Bol,BDF,HDi,,,,,,,,
+11/9,Bruno,Felipe,12x7,Luca,Complete,Bruno e Felipe,Geneal,HDi,,,,Lou,18,6,12,1
+11/9,Bruno,Felipe,9x12,Luca,Complete,Luca e Complete,Geneal,HDi,,,,Luca,29,17,12,0
+11/9,Bruno,Felipe,3x12,Luca,Complete,Luca e Complete,Geneal,HDi,,,,Thierno,16,8,8,0
+11/9,Bruno,Felipe,12x4,Luca,Complete,Bruno e Felipe,Geneal,HDi,,,,,,,,
+11/9,Bol,Lou,12x3,Thierno,Luca,Bol e Lou,Labgrad,HDi,,,,,,,,
+12/9,Luca,Felipe,12x10,Bruno,Complete,Luca e Felipe,Geneal,HDi,,,,,,,,
+12/9,Luca,Bruno,12x8,Lou,Bol,Luca e Bruno,Geneal,HDi,,,,,,,,
+12/9,Thierno,Felipe,12x7,Ana,Complete,Thierno e Felipe,Geneal,HDi,,,,,,,,
+12/9,Thierno,Gabi,10x12,Bruno,Luca,Bruno e Luca,Geneal,HDi,,,,,,,,
+12/9,Felipe,Luca,12x5,Lou,Bol,Felipe e Luca,Geneal,HDi,,,,,,,,
+12/9,Bruno,Thierno,12x8,Lou,Bol,Bruno e Thierno,Geneal,HDi,,,,,,,,
+12/9,Luca,Gabi,12x10,Lou,Bol,Luca e Gabi,Geneal,HDi,,,,,,,,
+14/9,Luca,Lou,3x12,Gabi,Ana,Gabi e Ana,Coordenadas,THI,,,,,,,,
+14/9,Luca,Lou,12x10,Gabi,Ana,Luca e Lou,Coordenadas,THI,,,,,,,,
+14/9,Luca,Lou,1x12,Bruno,Thierno,Bruno e Thierno,Coordenadas,THI,,,,,,,,
+14/9,Gabi,Complete,12x2,Bruno,Thierno,Gabi e Complete,Coordenadas,THI,,,,,,,,
+14/9,Gabi,Ana,10x12,Luca,Lou,Luca e Lou,Coordenadas,THI,,,,,,,,
+14/9,Luca,Lou,10x12,Bruno,Complete,Bruno e Complete,Coordenadas,THI,,,,,,,,
+14/9,Thierno,Bol,7x12,Bruno,Complete,Bruno e Complete,Coordenadas,THI,,,,,,,,
+14/9,Thierno,Ana,12x11,Bol,Luca,Thierno e Ana,Coordenadas,THI,,,,,,,,
+14/9,Bruno,Luca,12x9,Bol,Lou,Bruno e Luca,Coordenadas,THI,,,,,,,,
+14/9,Thierno,Bruno,12x5,Bol,Luca,Thierno e Bruno,Coordenadas,THI,,,,,,,,
+16/9,Thierno,Felipe,12x6,Bruno,Gabi,Thierno e Felipe,Geneal,THI,,,,,,,,
+16/9,Thierno,Felipe,2x12,Bruno,Luca,Bruno e Luca,Geneal,THI,,,,,,,,
+16/9,Thierno,Felipe,5x12,Bruno,Luca,Bruno e Luca,Geneal,THI,,,,,,,,
+16/9,Thierno,Felipe,11x12,Bruno,Luca,Bruno e Luca,Geneal,THI,,,,,,,,
+16/9,Felipe,Complete,12x11,Lou,Luca,Felipe e Complete,Geneal,HDI,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,
+,,,,,,#VALUE!,,,,,,,,,,

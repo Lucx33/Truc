@@ -1,0 +1,88 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+{% block content %}
+<!-- Exibindo as estatísticas do jogador -->
+<h4>Estatísticas</h4>
+<div class="estatisticas-container">
+    <div class="estatistica-item">
+        <p>Winrate</p>
+        <p>-</p>
+        <b class="winrate">{{stats['Winrate Geral'].iloc[0]}}</b>
+    </div>
+    <div class="estatistica-item">
+        <p>Melhor confronto</p>
+        {%if stats['Melhor Winrate Contra Dupla'].iloc[0] == 'N/A'%}
+            <p>-</p>
+            <b class="winrate">-</b>
+        {%else%}
+            {% set melhor_confronto_dupla = stats['Melhor Winrate Contra Dupla'].iloc[0].split(" (") %}
+            <p>Dupla: {{ melhor_confronto_dupla[0] | safe }}</p>
+            <b class="winrate">{{ melhor_confronto_dupla[1][:-1] | safe }}</b>
+        {%endif%}
+    </div>
+    <div class="estatistica-item">
+        <p>Melhor confronto individual</p>
+        {%if stats['Melhor Winrate Contra Jogador'].iloc[0] == 'N/A'%}
+            <p>-</p>
+            <b class="winrate">-</b>
+        {%else%}
+        {% set melhor_confronto_individual = stats['Melhor Winrate Contra Jogador'].iloc[0].split(" (") %}
+            <p>{{ melhor_confronto_individual[0] | safe }}</p>
+            <b class="winrate">{{ melhor_confronto_individual[1][:-1] | safe }}</b>
+            {%endif%}
+    </div>
+</div>
+{{ table | safe }}
+
+<style>
+    .estatisticas-container {
+        display: flex;
+        justify-content: space-between; /* Adapta o espaço entre os itens */
+    }
+    .estatistica-item {
+        flex: 1; /* Faz com que cada item ocupe a mesma quantidade de espaço */
+        text-align: center; /* Centraliza o texto em cada item */
+        padding: 10px; /* Adiciona um pouco de espaço interno */
+    }
+    .winrate {
+        font-size: 35px;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtém todos os elementos de winrate
+        var winrateElements = document.getElementsByClassName('winrate');
+        
+        Array.from(winrateElements).forEach(function(winrateElement) {
+            // Extrai a porcentagem como um número
+            var winrateValue = parseFloat(winrateElement.innerText.replace('%', ''));
+
+            // Define as cores base para os intervalos
+            var red, green, blue;
+
+            if (winrateValue > 80) {
+                // Azul claro: rgb(173, 216, 230) para valores acima de 80%
+                red = 20 + Math.round((255 - 173) * (100 - winrateValue) / 20);
+                green = 20 + Math.round((255 - 216) * (100 - winrateValue) / 20);
+                blue = 230 + Math.round((255 - 230) * (100 - winrateValue) / 20);
+            } else if (winrateValue >= 50) {
+                // Verde: rgb(0, 255, 0) para valores entre 50% e 80%
+                red = Math.round(255 * (80 - winrateValue) / 30);
+                green = 255;
+                blue = 0;
+            } else {
+                // Vermelho: rgb(255, 0, 0) para valores abaixo de 50%
+                red = 255;
+                green = Math.round(255 * winrateValue / 50);
+                blue = 0;
+            }
+
+            // Define a cor do texto do winrate
+            winrateElement.style.color = `rgb(${red}, ${green}, ${blue})`;
+        });
+    });
+</script>
+
+
+{% endblock %}
