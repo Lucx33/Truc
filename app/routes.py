@@ -17,6 +17,13 @@ jogador_dfs = {jogador: utils.criar_df_jogador(jogador, df) for jogador in jogad
 # Calculando as estatísticas de winrate para cada jogador
 jogador_stats = {jogador: utils.calcular_winrate(jogador_dfs[jogador]) for jogador in jogadores}
 
+for jogador in jogador_stats:
+    # Calculando a média de pontos por partida
+    media_pontos_df = utils.media_pontos_por_partida(jogador_dfs[jogador])
+    
+    # Adicionando a média de pontos como uma nova coluna no DataFrame de estatísticas do jogador
+    jogador_stats[jogador]['Média de Pontos por Partida'] = media_pontos_df.iloc[0]['Média de Pontos por Partida']
+    print(jogador_stats[jogador]['Média de Pontos por Partida'])
 # Criando links HTML para as partidas
 df_html = utils.create_links_partidas(df)
 df_jogador_html = {jogador: utils.create_links_jogador(df_jogador) for jogador, df_jogador in jogador_dfs.items()}

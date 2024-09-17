@@ -195,3 +195,31 @@ def calcular_winrate(df_jogador):
     }])
 
     return player_stats
+
+def media_pontos_por_partida(df_jogador):
+    total_pontos = 0
+    total_partidas = len(df_jogador['Placar'])
+    
+    for idx, row in df_jogador.iterrows():
+        placar = row['Placar']
+        resultado = row['Resultado']
+        
+        # Separando os pontos do placar
+        pontos = list(map(int, placar.split('x')))
+        
+        # Selecionando a pontuação correta
+        if resultado == 'Vitória':
+            total_pontos += max(pontos)  # Máximo para vitória
+        elif resultado == 'Derrota':
+            total_pontos += min(pontos)  # Mínimo para derrota
+
+    # Calculando a média
+    media_pontos = total_pontos / total_partidas if total_partidas > 0 else 0
+    
+    # Criando um DataFrame para exibir a média de pontos por partida
+    media_pontos_df = pd.DataFrame([{
+        'Média de Pontos por Partida': f"{round(media_pontos, 1)}"
+    }])
+    
+    return media_pontos_df
+

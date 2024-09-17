@@ -31,6 +31,11 @@
             <b class="winrate">{{ melhor_confronto_individual[1][:-1] | safe }}</b>
             {%endif%}
     </div>
+    <div class="estatistica-item">
+        <p>PPP</p>
+        <p>-</p>
+        <b class="PPP">{{ stats['Média de Pontos por Partida'][0] }}</b>
+    </div>
 </div>
 {{ table | safe }}
 
@@ -45,6 +50,10 @@
         padding: 10px; /* Adiciona um pouco de espaço interno */
     }
     .winrate {
+        font-size: 35px;
+    }
+    
+    .PPP {
         font-size: 35px;
     }
 </style>
@@ -82,6 +91,34 @@
             winrateElement.style.color = `rgb(${red}, ${green}, ${blue})`;
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtém todos os elementos de PPP
+        var pppElements = document.getElementsByClassName('PPP');
+
+        Array.from(pppElements).forEach(function(pppElement) {
+            // Obtém o valor do PPP como número
+            var pppValue = parseFloat(pppElement.innerText);
+
+            // Calcula a cor entre vermelho e verde
+            var red, green;
+
+            if (pppValue <= 12) {
+                // PPP máximo esperado é 12
+                var normalizedPPP = (pppValue - 6) / 4; // Normaliza o PPP para um valor entre 0 e 1
+                red = Math.round(255 * (1.6 - normalizedPPP));
+                green = Math.round(255 * normalizedPPP);
+            } else {
+                // Caso o PPP seja maior que 12, consideramos 12 como limite superior
+                red = 0;
+                green = 255;
+            }
+
+            // Define a cor do texto do PPP
+            pppElement.style.color = `rgb(${red}, ${green}, 0)`;
+        });
+    });
+
 </script>
 
 
