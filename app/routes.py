@@ -23,7 +23,6 @@ for jogador in jogador_stats:
     
     # Adicionando a média de pontos como uma nova coluna no DataFrame de estatísticas do jogador
     jogador_stats[jogador]['Média de Pontos por Partida'] = media_pontos_df.iloc[0]['Média de Pontos por Partida']
-    print(jogador_stats[jogador]['Média de Pontos por Partida'])
 # Criando links HTML para as partidas
 df_html = utils.create_links_partidas(df)
 df_jogador_html = {jogador: utils.create_links_jogador(df_jogador) for jogador, df_jogador in jogador_dfs.items()}
